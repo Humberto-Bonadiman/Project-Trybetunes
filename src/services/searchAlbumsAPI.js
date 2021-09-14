@@ -1,3 +1,6 @@
+/* O arquivo searchAlbumsAPI.js contém uma função que faz uma requisição à uma API e retorna
+os álbuns de uma banda ou artista. */
+
 const searchAlbumsAPI = async (artist) => {
   const artistNameURL = encodeURI(artist).replaceAll('%20', '+');
 
