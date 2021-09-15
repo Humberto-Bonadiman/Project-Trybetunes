@@ -32,6 +32,7 @@ class Login extends React.Component {
     this.setState({
       loading: true,
     });
+
     await createUser({ name });
     this.setState({
       loading: false,
