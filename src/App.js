@@ -6,7 +6,6 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <p>TrybeTunes</p>
         <AllPaths />
       </BrowserRouter>
     );

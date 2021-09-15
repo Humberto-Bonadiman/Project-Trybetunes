@@ -12,6 +12,8 @@ class Header extends React.Component {
     };
   }
 
+  /* Nesta parte eu consultei o repositório da Izabela Guarino
+  Fonte: https://github.com/tryber/sd-014-b-project-trybetunes/pull/64/files */
   componentDidMount() {
     getUser().then((data) => {
       this.setState({ name: data.name, loading: false });
@@ -25,11 +27,13 @@ class Header extends React.Component {
       <header data-testid="header-component">
         <p data-testid="header-user-name">{ loading ? loadingTime : name }</p>
         <nav>
-          <Link to="/search">Pesquisar</Link>
-          <Link to="/album/:id">Album</Link>
-          <Link to="/favorites">Favoritas</Link>
-          <Link to="/profile">Perfil</Link>
-          <Link to="/profile/edit">Editar Perfil</Link>
+          <ul>
+            <li><Link to="/search" data-testid="link-to-search">Search</Link></li>
+            <li>
+              <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
+            </li>
+            <li><Link to="/profile" data-testid="link-to-profile">Profile</Link></li>
+          </ul>
         </nav>
       </header>
     );
