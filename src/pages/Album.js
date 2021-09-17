@@ -18,12 +18,10 @@ class Album extends React.Component {
   }
 
   async callGetMusicsFromMusicsApi() {
-    console.log(this.props);
     const { match: { params: { id } } } = this.props;
     const musics = await getMusics(id);
-    console.log(musics);
     this.setState({
-      musicsArray: [...musics],
+      musicsArray: musics.slice(1),
       artistName: musics[0].artistName,
       collectionName: musics[0].collectionName,
       artworkUrl100: musics[0].artworkUrl100,
@@ -31,7 +29,7 @@ class Album extends React.Component {
   }
 
   render() {
-    const { musicsArray, artistName, collectionName, artworkUrl100 } = this.state;
+    const { musicsArray, artworkUrl100, collectionName, artistName } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -39,8 +37,10 @@ class Album extends React.Component {
         <article>
           <img src={ artworkUrl100 } alt={ `Album ${artistName}` } />
           <h2 data-testid="artist-name">{ artistName }</h2>
-          <h4 data-testid="album-name">{ collectionName }</h4>
-          <MusicCard />
+          <h3 data-testid="album-name">{ collectionName }</h3>
+          <div>
+            { musicsArray.map((music, ind) => <MusicCard key={ ind } musics={ music } />)}
+          </div>
         </article>
       </div>
     );

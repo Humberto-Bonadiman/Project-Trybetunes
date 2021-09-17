@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class MusicCard extends React.Component {
   render() {
-    const { trackName, previewUrl } = this.props;
+    const { musics: { trackName, previewUrl } } = this.props;
     return (
       <div>
         <p>{ trackName }</p>
@@ -18,8 +18,10 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
-  previewUrl: PropTypes.string.isRequired,
-  trackName: PropTypes.string.isRequired,
+  musics: PropTypes.shape({
+    previewUrl: PropTypes.string.isRequired,
+    trackName: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default MusicCard;
