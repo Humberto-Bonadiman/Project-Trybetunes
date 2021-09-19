@@ -1,28 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { addSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      favorite: false,
+      loading: false,
+      checked: false,
     };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-
-    this.setState({
-      [name]: value,
-    });
+  callAddSongFromFavoriteSongsAPI = async (event) => {
+    this.setState({ loading: true });
+    if (event.target.checked) {
+      await addSong(event.target.trackId);
+      this.setState({
+        loading: false,
+        checked: true,
+      });
+    }
   }
 
   render() {
-    const { musics: { trackName, previewUrl, trackId } } = this.props;
-    const { favorite } = this.state;
+    const { musics } = this.props;
+    const { trackName, previewUrl, trackId } = musics;
+    const { loading, checked } = this.state;
+    const loadingTime = <span>Carregando...</span>;
     return (
       <div>
         <p>{ trackName }</p>
@@ -31,15 +36,20 @@ class MusicCard extends React.Component {
           O seu navegador não suporta o elemento
           <code>audio</code>
         </audio>
-        <label htmlFor="favorite" data-testid={ `checkbox-music-${trackId}` }>
-          Favorita
-          <input
-            type="checkbox"
-            name="favorite"
-            value={ favorite }
-            onChange={ this.handleChange }
-          />
-        </label>
+        { loading
+          ? loadingTime
+          : (
+            <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
+              <p>Favorito</p>
+              <input
+                name="favorite"
+                type="checkbox"
+                id={ trackId }
+                onChange={ this.callAddSongFromFavoriteSongsAPI }
+                checked={ checked }
+              />
+            </label>
+          )}
       </div>
     );
   }
@@ -47,9 +57,9 @@ class MusicCard extends React.Component {
 
 MusicCard.propTypes = {
   musics: PropTypes.shape({
-    previewUrl: PropTypes.string.isRequired,
-    trackName: PropTypes.string.isRequired,
-    trackId: PropTypes.number.isRequired,
+    trackName: PropTypes.string,
+    previewUrl: PropTypes.string,
+    trackId: PropTypes.string,
   }).isRequired,
 };
 

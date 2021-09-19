@@ -9,6 +9,7 @@ class Album extends React.Component {
     super();
     this.state = {
       musicsArray: [],
+      loading: true,
     };
     this.callGetMusicsFromMusicsApi = this.callGetMusicsFromMusicsApi.bind(this);
   }
@@ -22,24 +23,45 @@ class Album extends React.Component {
     const musics = await getMusics(id);
     this.setState({
       musicsArray: musics.slice(1),
-      artistName: musics[0].artistName,
-      collectionName: musics[0].collectionName,
-      artworkUrl100: musics[0].artworkUrl100,
+      loading: false,
     });
   }
 
+  callLoadingMessage() {
+    return <div>Carregando...</div>;
+  }
+
   render() {
-    const { musicsArray, artworkUrl100, collectionName, artistName } = this.state;
+    const { match: { params: { id } } } = this.props;
+    const { musicsArray, loading } = this.state;
+    const loadingTime = <p>Carregando...</p>;
+    if (loading) {
+      return (
+        <div data-testid="page-album">
+          { loadingTime }
+        </div>
+      );
+    }
     return (
       <div data-testid="page-album">
         <Header />
         <h1>Album</h1>
         <article>
-          <img src={ artworkUrl100 } alt={ `Album ${artistName}` } />
-          <h2 data-testid="artist-name">{ artistName }</h2>
-          <h3 data-testid="album-name">{ collectionName }</h3>
+          <img
+            src={ musicsArray[0].artworkUrl100 }
+            alt={ `Album ${musicsArray[0].artistName}` }
+          />
+          <h2 data-testid="artist-name">{ musicsArray[0].artistName }</h2>
+          <h3 data-testid="album-name">{ musicsArray[0].artistName }</h3>
           <div>
-            { musicsArray.map((music, ind) => <MusicCard key={ ind } musics={ music } />)}
+            { musicsArray.map((music) => (<MusicCard
+              key={ music.trackId }
+              musics={ music }
+              previewUrl={ music.previewUrl }
+              trackName={ music.trackName }
+              trackId={ music.trackId }
+              musicsArray={ id }
+            />)) }
           </div>
         </article>
       </div>
