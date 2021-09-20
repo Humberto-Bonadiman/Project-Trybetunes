@@ -22,23 +22,22 @@ class Album extends React.Component {
   async callGetMusicsFromMusicsApi() {
     const { match: { params: { id } } } = this.props;
     const musics = await getMusics(id);
+    console.log(musics);
     this.setState({
       musicsArray: musics.slice(1),
       loading: false,
+      artistName: musics[0].artistName,
+      collectionName: musics[0].collectionName,
     });
-  }
-
-  callLoadingMessage() {
-    return <div>Carregando...</div>;
   }
 
   render() {
     const { match: { params: { id } } } = this.props;
-    const { musicsArray, loading } = this.state;
+    const { musicsArray, loading, collectionName, artistName } = this.state;
     const loadingTime = <p>Carregando...</p>;
     if (loading) {
       return (
-        <div data-testid="page-album">
+        <div>
           { loadingTime }
         </div>
       );
@@ -52,8 +51,8 @@ class Album extends React.Component {
             src={ musicsArray[0].artworkUrl100 }
             alt={ `Album ${musicsArray[0].artistName}` }
           />
-          <h2 data-testid="artist-name">{ musicsArray[0].artistName }</h2>
-          <h3 data-testid="album-name">{ musicsArray[0].artistName }</h3>
+          <h2 data-testid="artist-name">{ artistName }</h2>
+          <h3 data-testid="album-name">{ collectionName }</h3>
           <div>
             { musicsArray.map((music) => (<MusicCard
               key={ music.trackId }
