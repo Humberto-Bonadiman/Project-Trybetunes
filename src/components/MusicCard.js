@@ -50,9 +50,6 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, trackId } = musics;
     const { loading, favorites } = this.state;
     const loadingTime = <span>Carregando...</span>;
-    if (loading) {
-      return loadingTime;
-    }
     const favoriteOrNot = favorites.some((song) => song.trackId === musics.trackId);
     return (
       <div>
@@ -62,16 +59,18 @@ class MusicCard extends React.Component {
           O seu navegador não suporta o elemento
           <code>audio</code>
         </audio>
-        <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
-          Favorita
-          <input
-            name="favorite"
-            type="checkbox"
-            id={ trackId }
-            onChange={ this.callAddSongFromFavoriteSongsAPI }
-            checked={ favoriteOrNot }
-          />
-        </label>
+        { loading ? loadingTime : (
+          <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
+            Favorita
+            <input
+              name="favorite"
+              type="checkbox"
+              id={ trackId }
+              onChange={ this.callAddSongFromFavoriteSongsAPI }
+              checked={ favoriteOrNot }
+            />
+          </label>
+        )}
       </div>
     );
   }
