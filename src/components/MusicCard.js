@@ -24,19 +24,18 @@ class MusicCard extends React.Component {
     });
   }
 
-  callAddSongFromFavoriteSongsAPI = async ({ target: { id, checked } }) => {
+  callAddSongFromFavoriteSongsAPI = async ({ target: { checked } }) => {
+    const { musics } = this.props;
     this.setState({ loading: true });
     if (checked) {
-      console.log('text', checked);
-      await addSong(id);
+      await addSong(musics);
       this.callFavoriteSongsFromFavoriteSongs();
     /*       this.setState({
         loading: false,
         checked: true,
       }); */
     } else {
-      await removeSong(id);
-      console.log('removeu');
+      await removeSong(musics);
       this.callFavoriteSongsFromFavoriteSongs();
     /*       this.setState({
         loading: false,
@@ -51,11 +50,10 @@ class MusicCard extends React.Component {
     const { trackName, previewUrl, trackId } = musics;
     const { loading, favorites } = this.state;
     const loadingTime = <span>Carregando...</span>;
-    // console.log(typeof parseInt(favorites[0], 10));
     if (loading) {
       return loadingTime;
     }
-    const favoriteOrNot = favorites.some((song) => parseInt(song, 10) === musics.trackId);
+    const favoriteOrNot = favorites.some((song) => song.trackId === musics.trackId);
     return (
       <div>
         <p>{ trackName }</p>
@@ -64,9 +62,6 @@ class MusicCard extends React.Component {
           O seu navegador não suporta o elemento
           <code>audio</code>
         </audio>
-        {/* { loading
-          ? loadingTime
-          : ( */}
         <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
           Favorita
           <input
@@ -77,7 +72,6 @@ class MusicCard extends React.Component {
             checked={ favoriteOrNot }
           />
         </label>
-        {/*           )} */}
       </div>
     );
   }
