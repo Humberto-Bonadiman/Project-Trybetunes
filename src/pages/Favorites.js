@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
-// import { BrowserRouter } from 'react-router-dom';
+import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
   constructor() {
@@ -18,20 +17,24 @@ class Favorites extends React.Component {
     this.callGetFavoriteFromFavoriteSongs();
   }
 
+  componentDidUpdate() {
+    this.callGetFavoriteFromFavoriteSongs();
+  }
+
   callGetFavoriteFromFavoriteSongs = async () => {
-    const favoriteSongs = await getFavoriteSongs();
-    this.setState({
-      favorites: favoriteSongs,
-      loading: false,
-    });
+    getFavoriteSongs()
+      .then((response) => this.setState({
+        favorites: response,
+        loading: false,
+      }));
   }
 
   // Nesta parte eu consultei o repositório do Luiz Gustavo
   // Fonte: https://github.com/tryber/sd-014-b-project-trybetunes/pull/42/commits/37e54f8371de73e9b5f9baaad852c297c303fa3b
-  callRemoveSongs= (musics) => {
+  callRemoveSongs = (musics) => {
     this.setState({ loading: true }, async () => {
-      await removeSong(musics);
-      this.callGetFavoriteFromFavoriteSongs();
+      await removeSong(musics)
+        .then(() => this.callGetFavoriteFromFavoriteSongs());
     });
   }
 
@@ -57,13 +60,32 @@ class Favorites extends React.Component {
     );
   };
 
+  removeAndUpdateFavoritesSongs = () => {
+    const { loading, favorites } = this.state;
+    if (favorites.length === 0) {
+      return (
+        <h3>Nenhuma Música Favoritada!</h3>
+      );
+    }
+    if (!loading) {
+      return (
+        <section>
+          <div>
+            <h2>Músicas favoritas:</h2>
+          </div>
+          { this.showFavoriteSongs() }
+        </section>
+      );
+    }
+  }
+
   render() {
     const { loading } = this.state;
     const loadingTime = <span>Carregando...</span>;
     return (
       <div data-testid="page-favorites">
         <Header />
-        { loading ? loadingTime : this.showFavoriteSongs() }
+        { loading ? loadingTime : this.removeAndUpdateFavoritesSongs() }
       </div>
     );
   }
