@@ -39,7 +39,12 @@ class Profile extends React.Component {
       <article>
         <p>{ name }</p>
         <p>{ email }</p>
-        <img src={ image } alt={ `Foto ${name}` } data-testid="profile-image" />
+        <img
+          src={ image }
+          alt={ `Foto ${name}` }
+          width="200"
+          data-testid="profile-image"
+        />
         <p>{ description }</p>
         <Link to="/profile/edit">Editar perfil</Link>
       </article>
