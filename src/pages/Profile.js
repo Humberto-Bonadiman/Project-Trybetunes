@@ -21,7 +21,6 @@ class Profile extends React.Component {
 
   async callGetUserFromUserApi() {
     const user = await getUser();
-    console.log(user);
     const { name, email, image, description } = user;
     this.setState({
       loading: false,
