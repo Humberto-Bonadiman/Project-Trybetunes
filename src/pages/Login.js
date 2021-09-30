@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import InputName from './Inputs/InputName';
-// import { BrowserRouter } from 'react-router-dom';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -48,7 +48,7 @@ class Login extends React.Component {
       return loadingTime;
     }
     return (
-      <div data-testid="page-login">
+      <div data-testid="page-login" className="login-container">
         <div>{ redirect ? <Redirect to="/search" /> : ''}</div>
         <form>
           <InputName value={ name } onChange={ this.handleChange } />
@@ -57,6 +57,7 @@ class Login extends React.Component {
             data-testid="login-submit-button"
             type="button"
             onClick={ this.saveNameOfInput }
+            className="btn-login"
           >
             Entrar
           </button>
