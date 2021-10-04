@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
+import './Header.css';
 
 class Header extends React.Component {
   constructor() {
@@ -24,15 +25,17 @@ class Header extends React.Component {
     const { name, loading } = this.state;
     const loadingTime = <span>Carregando...</span>;
     return (
-      <header data-testid="header-component">
-        <p data-testid="header-user-name">{ loading ? loadingTime : name }</p>
-        <nav>
+      <header data-testid="header-component" className="header-component">
+        <nav className="navigation-links">
           <ul>
             <li><Link to="/search" data-testid="link-to-search">Search</Link></li>
             <li>
               <Link to="/favorites" data-testid="link-to-favorites">Favorites</Link>
             </li>
             <li><Link to="/profile" data-testid="link-to-profile">Profile</Link></li>
+            <li>
+              <p data-testid="header-user-name">{ loading ? loadingTime : name }</p>
+            </li>
           </ul>
         </nav>
       </header>

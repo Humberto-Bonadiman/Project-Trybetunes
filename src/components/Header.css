@@ -1,0 +1,31 @@
+.header-component {
+  position: relative;
+  top:0;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #43D1AF;
+  display: flex;
+  justify-content: space-around;
+}
+
+li p {
+  color: whitesmoke;
+}
+
+li a {
+  display: block;
+  color: whitesmoke;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #30C29E;
+}
