@@ -6,7 +6,6 @@ class InputName extends React.Component {
     const { value, onChange } = this.props;
     return (
       <label htmlFor="name" className="label-login">
-        Nome:
         <input
           type="text"
           name="name"
@@ -14,6 +13,7 @@ class InputName extends React.Component {
           value={ value }
           data-testid="login-name-input"
           className="input-login"
+          placeholder="Nome"
         />
       </label>
     );

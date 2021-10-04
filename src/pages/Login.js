@@ -50,8 +50,10 @@ class Login extends React.Component {
     return (
       <div data-testid="page-login" className="login-container">
         <div>{ redirect ? <Redirect to="/search" /> : ''}</div>
+        <div className="div-logo"><div className="logo-positiva" /></div>
         <form>
           <InputName value={ name } onChange={ this.handleChange } />
+          <br />
           <button
             disabled={ name.length < lenghtName }
             data-testid="login-submit-button"
