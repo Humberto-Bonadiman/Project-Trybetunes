@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import InputName from './Inputs/InputName';
 import './Login.css';
+import loadingImage from './images/loading.gif';
+import logoPositiva from './images/logo_positiva.png';
 
 class Login extends React.Component {
   constructor() {
@@ -43,14 +45,17 @@ class Login extends React.Component {
   render() {
     const { name, loading, redirect } = this.state;
     const lenghtName = 3;
-    const loadingTime = <span>Carregando...</span>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
     if (loading) {
       return loadingTime;
     }
     return (
       <div data-testid="page-login" className="login-container">
         <div>{ redirect ? <Redirect to="/search" /> : ''}</div>
-        <div className="div-logo"><div className="logo-positiva" /></div>
+        <img src={ logoPositiva } alt="logo-trybetunes" className="trybetunes" />
         <form>
           <InputName value={ name } onChange={ this.handleChange } />
           <br />

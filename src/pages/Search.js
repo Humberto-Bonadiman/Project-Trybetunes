@@ -2,7 +2,8 @@ import React from 'react';
 import Header from '../components/Header';
 import AlbunsArray from '../components/AlbunsArray';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
-// import { BrowserRouter } from 'react-router-dom';
+import './Search.css';
+import loadingImage from './images/loading.gif';
 
 /* Nesta parte consultei o repositório do Michael Caxias
   Fonte: https://github.com/tryber/sd-014-b-project-trybetunes/pull/2/files */
@@ -45,27 +46,36 @@ class Search extends React.Component {
   render() {
     const { music, loading, artist, albunsResult, albuns } = this.state;
     const lenghtName = 2;
-    const loadingTime = <span>Carregando...</span>;
-    const element = <p>{ `Resultado de álbuns de: ${artist}` }</p>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
+    const element = (
+      <p
+        className="result-name"
+      >
+        { `Resultado de álbuns de: ${artist}` }
+      </p>);
     const formInputAndButton = (
-      <div data-testid="page-search">
-        <form>
-          <input
-            data-testid="search-artist-input"
-            type="text"
-            name="search-artist"
-            onChange={ this.handleChange }
-            value={ music }
-          />
-          <button
-            disabled={ music.length < lenghtName }
-            data-testid="search-artist-button"
-            type="button"
-            onClick={ this.searchButtonArtistOrAlbum }
-          >
-            Pesquisar
-          </button>
-        </form>
+      <div data-testid="page-search" className="page-search">
+        <input
+          className="input-search"
+          data-testid="search-artist-input"
+          type="text"
+          name="search-artist"
+          onChange={ this.handleChange }
+          value={ music }
+          placeholder="Digite uma banda ou artista"
+        />
+        <button
+          disabled={ music.length < lenghtName }
+          data-testid="search-artist-button"
+          type="button"
+          onClick={ this.searchButtonArtistOrAlbum }
+          className="btn-search"
+        >
+          Pesquisar
+        </button>
       </div>
     );
     return (

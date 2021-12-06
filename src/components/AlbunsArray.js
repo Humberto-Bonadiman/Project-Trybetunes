@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './AlbunsArray.css';
 
 /* Esta parte eu consultei o repositório da Bel Albuquerque
   Fonte: https://github.com/tryber/sd-014-b-project-trybetunes/pull/13/files */
@@ -15,8 +16,9 @@ class AlbunsArray extends React.Component {
         key={ collectionId }
         data-testid={ `link-to-album-${collectionId}` }
         to={ `/album/${collectionId}` }
+        className="album-card"
       >
-        <article>
+        <article className="container-card">
           <img src={ artworkUrl100 } alt="album" />
           <p>{ collectionName }</p>
           <p>{ artistName }</p>
@@ -24,11 +26,11 @@ class AlbunsArray extends React.Component {
       </Link>
     ));
 
-    const albumNotFound = <p>Nenhum álbum foi encontrado</p>;
+    const albumNotFound = <p className="nothing-found">Nenhum álbum foi encontrado</p>;
     const lookAlbum = albunsList.length > 0;
 
     return (
-      <article>
+      <article className="article-cards">
         { lookAlbum ? albunsList : albumNotFound}
       </article>
     );

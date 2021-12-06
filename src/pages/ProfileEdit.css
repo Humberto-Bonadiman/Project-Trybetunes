@@ -1,0 +1,58 @@
+.profile-edit-information {
+  align-content: space-around;
+  align-items: center;
+  background: rgb(26, 88, 74);
+  border-radius: 10px;
+  box-shadow: 5px 10px 8px rgb(1, 1, 1), 5px 10px 8px rgb(26, 88, 74);
+  color: rgb(224, 221, 221);
+  display: flex;
+  flex-flow: column wrap;
+  font: 95% Arial, Helvetica, sans-serif;
+  justify-content: center;
+  margin: 30px auto;
+	max-width: 500px;
+	padding: 20px;
+}
+
+.edit-input {
+  background: rgb(254, 254, 254);
+  border: 1px solid rgb(204, 204, 204);
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  color: rgb(85, 85, 85);
+  font: 95% Arial, Helvetica, sans-serif;
+	margin-bottom: 3%;
+  outline: none;
+	padding: 2%;
+  text-align: center;
+  width: 65%;
+}
+
+.edit-input:focus {
+  box-shadow: 0 0 5px rgb(67, 209, 175);
+	border: 1px solid rgb(67, 209, 175);
+}
+
+.image-profile {
+  border: 4px solid rgb(212, 207, 207);
+  border-radius: 10px;
+  margin-bottom: 1%;
+  width: 150px;
+}
+
+.btn-profile {
+  background: rgb(67, 209, 175);
+	border-bottom: 2px rgb(48, 194, 158);
+	border-style: none none solid;
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  color: rgb(254, 254, 254);
+  padding: 3%;
+	width: 100%;
+}
+
+.btn-profile:hover {
+  cursor: pointer;
+}

@@ -34,7 +34,12 @@ class Header extends React.Component {
             </li>
             <li><Link to="/profile" data-testid="link-to-profile">Profile</Link></li>
             <li>
-              <p data-testid="header-user-name">{ loading ? loadingTime : name }</p>
+              <p
+                data-testid="header-user-name"
+                className="username-header"
+              >
+                { loading ? loadingTime : name }
+              </p>
             </li>
           </ul>
         </nav>

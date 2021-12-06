@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './MusicCard.css';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -30,17 +31,9 @@ class MusicCard extends React.Component {
     if (checked) {
       await addSong(musics);
       this.callFavoriteSongsFromFavoriteSongs();
-    /*       this.setState({
-        loading: false,
-        checked: true,
-      }); */
     } else {
       await removeSong(musics);
       this.callFavoriteSongsFromFavoriteSongs();
-    /*       this.setState({
-        loading: false,
-        checked: false,
-      }); */
     }
     this.callFavoriteSongsFromFavoriteSongs();
   }
@@ -52,16 +45,24 @@ class MusicCard extends React.Component {
     const loadingTime = <span>Carregando...</span>;
     const favoriteOrNot = favorites.some((song) => song.trackId === musics.trackId);
     return (
-      <div>
+      <div className="music-card">
         <p>{ trackName }</p>
-        <audio data-testid="audio-component" src={ previewUrl } controls>
+        <audio
+          data-testid="audio-component"
+          src={ previewUrl }
+          controls
+        >
           <track kind="captions" />
           O seu navegador não suporta o elemento
           <code>audio</code>
         </audio>
+        <br />
         { loading ? loadingTime : (
-          <label htmlFor={ trackId } data-testid={ `checkbox-music-${trackId}` }>
-            Favorita
+          <label
+            htmlFor={ trackId }
+            data-testid={ `checkbox-music-${trackId}` }
+          >
+            {'Favorita '}
             <input
               name="favorite"
               type="checkbox"

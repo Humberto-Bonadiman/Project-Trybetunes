@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
+import './Profile.css';
+import loadingImage from './images/loading.gif';
 
 class Profile extends React.Component {
   constructor() {
@@ -33,19 +35,32 @@ class Profile extends React.Component {
 
   render() {
     const { loading, name, email, image, description } = this.state;
-    const loadingTime = <p>Carregando...</p>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
     const informationProfile = (
-      <article>
-        <p>{ name }</p>
-        <p>{ email }</p>
+      <article className="profile-information">
+        <div>
+          <p className="title-name">Name:</p>
+          <p className="profile-text">{ name }</p>
+        </div>
+        <div>
+          <p className="title-name">Email:</p>
+          <p className="profile-text">{ email }</p>
+        </div>
         <img
           src={ image }
           alt={ `Foto ${name}` }
           width="200"
           data-testid="profile-image"
+          className="profile-image"
         />
-        <p>{ description }</p>
-        <Link to="/profile/edit">Editar perfil</Link>
+        <div>
+          <p className="title-name">Description:</p>
+          <p className="profile-text">{ description }</p>
+        </div>
+        <Link to="/profile/edit" className="profile-link">Editar perfil</Link>
       </article>
     );
     return (

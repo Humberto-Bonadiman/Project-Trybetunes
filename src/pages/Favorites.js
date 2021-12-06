@@ -2,6 +2,8 @@ import React from 'react';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import './Favorites.css';
+import loadingImage from './images/loading.gif';
 
 class Favorites extends React.Component {
   constructor() {
@@ -42,11 +44,11 @@ class Favorites extends React.Component {
     const { favorites } = this.state;
     if (favorites.length === 0) {
       return (
-        <h3>Nenhuma Música Favoritada!</h3>
+        <h3 className="favorite-songs">Nenhuma Música Favoritada!</h3>
       );
     }
     return (
-      <div>
+      <div className="favorite-cards">
         {favorites.map((song) => (
           <MusicCard
             key={ song.trackId }
@@ -64,13 +66,13 @@ class Favorites extends React.Component {
     const { loading, favorites } = this.state;
     if (favorites.length === 0) {
       return (
-        <h3>Nenhuma Música Favoritada!</h3>
+        <h3 className="favorite-songs">Nenhuma Música Favoritada!</h3>
       );
     }
     if (!loading) {
       return (
         <section>
-          <div>
+          <div className="favorite-songs">
             <h2>Músicas favoritas:</h2>
           </div>
           { this.showFavoriteSongs() }
@@ -81,7 +83,10 @@ class Favorites extends React.Component {
 
   render() {
     const { loading } = this.state;
-    const loadingTime = <span>Carregando...</span>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
     return (
       <div data-testid="page-favorites">
         <Header />

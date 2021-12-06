@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Album.css';
+import loadingImage from './images/loading.gif';
 
 class Album extends React.Component {
   constructor() {
@@ -34,7 +36,10 @@ class Album extends React.Component {
   render() {
     const { match: { params: { id } } } = this.props;
     const { musicsArray, loading, collectionName, artistName } = this.state;
-    const loadingTime = <p>Carregando...</p>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
     if (loading) {
       return (
         <div>
@@ -45,15 +50,21 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <h1>Album</h1>
+        <h1 className="album-text">Album</h1>
         <article>
-          <img
-            src={ musicsArray[0].artworkUrl100 }
-            alt={ `Album ${musicsArray[0].artistName}` }
-          />
-          <h2 data-testid="artist-name">{ artistName }</h2>
-          <h3 data-testid="album-name">{ collectionName }</h3>
-          <div>
+          <h2
+            data-testid="artist-name"
+            className="album-text"
+          >
+            { artistName }
+          </h2>
+          <h3
+            data-testid="album-name"
+            className="album-text"
+          >
+            { collectionName }
+          </h3>
+          <div className="musics-array">
             { musicsArray.map((music) => (<MusicCard
               key={ music.trackId }
               musics={ music }

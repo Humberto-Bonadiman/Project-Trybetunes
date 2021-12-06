@@ -1,5 +1,11 @@
 .login-container {
-  margin: 18% auto auto auto;
+  margin: 9% auto auto auto;
+}
+
+.trybetunes{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 form {
@@ -31,17 +37,15 @@ form {
 }
 
 .btn-login {
+	background: rgb(67, 209, 175);
   box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	width: 100%;
+	border-bottom: 2px rgb(48, 194, 158);
+	border-style: none none solid;
+	color: rgb(253, 253, 253);
 	padding: 3%;
-	background: #43D1AF;
-	border-bottom: 2px solid #30C29E;
-	border-top-style: none;
-	border-right-style: none;
-	border-left-style: none;	
-	color: #fff;
+	width: 100%;
 }
 
 .btn-login:hover {

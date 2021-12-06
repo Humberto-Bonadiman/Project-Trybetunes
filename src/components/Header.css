@@ -1,17 +1,18 @@
 .header-component {
+  border-bottom: 1px solid rgb(26, 88, 74);
   position: relative;
   top:0;
   width: 100%;
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: #43D1AF;
+  background: rgb(67, 209, 175);
   display: flex;
   justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 li p {
@@ -19,13 +20,17 @@ li p {
 }
 
 li a {
-  display: block;
   color: whitesmoke;
-  text-align: center;
+  display: block;
   padding: 14px 16px;
+  text-align: center;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: #30C29E;
+  background-color: rgb(48, 194, 158);
+}
+
+.username-header {
+  color: rgb(235, 217, 217);
 }

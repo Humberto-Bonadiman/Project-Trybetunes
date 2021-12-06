@@ -1,0 +1,17 @@
+.favorite-songs {
+  color: rgb(67, 209, 175);
+  display: flex;
+  font: Arial, Helvetica, sans-serif;
+  height: 30px;
+  justify-content: center;
+  margin: 20px auto auto auto;
+  text-shadow: 1px 2px 2px black, 1px 2px 2px rgb(26, 88, 74);
+}
+
+.favorite-cards {
+  align-content: space-around;
+  align-items: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}

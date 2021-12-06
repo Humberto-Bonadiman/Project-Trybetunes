@@ -2,6 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
+import './ProfileEdit.css';
+import loadingImage from './images/loading.gif';
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -41,59 +43,61 @@ class ProfileEdit extends React.Component {
     const { name, email, image, description } = this.state;
     const lenghtButton = name && email && image && description;
     return (
-      <form>
-        <div>
-          <label htmlFor="name">
-            Nome
-            <input
-              data-testid="edit-input-name"
-              type="text"
-              name="name"
-              id="name"
-              onChange={ this.handleChange }
-              value={ name }
-            />
-          </label>
-          <label htmlFor="email">
-            E-mail
-            <input
-              data-testid="edit-input-email"
-              type="text"
-              name="email"
-              id="email"
-              onChange={ this.handleChange }
-              value={ email }
-            />
-          </label>
-          <label htmlFor="description">
-            Description
-            <input
-              data-testid="edit-input-description"
-              type="text"
-              name="description"
-              id="description"
-              onChange={ this.handleChange }
-              value={ description }
-            />
-          </label>
-        </div>
-        <div>
-          <img src={ image } alt={ `Foto de ${name}` } width="200" />
-          <input
-            data-testid="edit-input-image"
-            type="text"
-            placeholder="Insira a URL"
-            name="image"
-            id="image"
-            onChange={ this.handleChange }
-            value={ image }
-          />
-        </div>
+      <form className="profile-edit-information">
+        <input
+          data-testid="edit-input-name"
+          type="text"
+          name="name"
+          id="name"
+          className="edit-input"
+          onChange={ this.handleChange }
+          value={ name }
+          placeholder="Nome"
+        />
+        <br />
+        <input
+          data-testid="edit-input-email"
+          type="text"
+          name="email"
+          id="email"
+          className="edit-input"
+          onChange={ this.handleChange }
+          value={ email }
+          placeholder="E-mail"
+        />
+        <br />
+        <input
+          data-testid="edit-input-description"
+          type="text"
+          name="description"
+          id="description"
+          className="edit-input"
+          onChange={ this.handleChange }
+          value={ description }
+          placeholder="Description"
+        />
+        <img
+          className="image-profile"
+          src={ image }
+          alt={ `Foto de ${name}` }
+        />
+        <br />
+        <input
+          data-testid="edit-input-image"
+          type="text"
+          placeholder="Insira a URL"
+          name="image"
+          id="image"
+          className="edit-input"
+          onChange={ this.handleChange }
+          value={ image }
+        />
         <button
           data-testid="edit-button-save"
           type="button"
           onClick={ this.callUpdateUseFromUserApi }
           disabled={ !lenghtButton }
+          className="btn-profile"
         >
           Salvar
         </button>
@@ -114,7 +118,10 @@ class ProfileEdit extends React.Component {
 
   render() {
     const { loading, update } = this.state;
-    const loadingTime = <span>Carregando...</span>;
+    const loadingTime = (
+      <div className="loading-container">
+        <img src={ loadingImage } alt="loading..." className="loading" />
+      </div>);
     return (
       <div data-testid="page-profile-edit">
         <Header />
