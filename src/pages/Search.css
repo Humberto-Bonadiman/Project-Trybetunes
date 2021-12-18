@@ -64,6 +64,23 @@
 	color: rgb(67, 209, 175);
 	font: 95% Arial, Helvetica, sans-serif;
 	font-size: 18px;
-	margin-top: 25px;
+	margin-top: 95px;
 	text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .page-search {
+    flex-flow: row wrap;
+  }
+
+	.input-search {
+		height: 20px;
+		text-align: center;
+		width: 90%;
+	}
+
+	.btn-search {
+		height: 20px;
+		width: 90%;
+	}
 }

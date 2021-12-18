@@ -1,0 +1,9 @@
+.NormalNavigation {
+  width: 70%;
+}
+
+@media screen and (max-width: 600px) {
+  .NormalNavigation {
+    display: none;
+  }
+}

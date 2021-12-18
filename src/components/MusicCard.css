@@ -7,3 +7,12 @@
   box-shadow: 5px 10px 8px rgb(0, 0, 0), 5px 10px 8px rgb(26, 88, 74);
   max-width: 310px;
 }
+
+@media screen and (max-width: 600px) {
+  .music-card {
+    max-width: 250px;
+  }
+  audio {
+    width: 200px;
+  }
+}

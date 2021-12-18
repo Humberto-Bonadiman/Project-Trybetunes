@@ -22,7 +22,7 @@ a:hover {
   margin: 20px;
   padding: 0px 0px 16px;
   transition: 0.3s;
-  width: 13% !important;
+  width: 170px;
 }
 
 .album-card:hover {
@@ -42,4 +42,16 @@ a:hover {
 	font-size: 18px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .article-cards {
+    align-items: center;
+    flex-flow: column;
+    justify-content: space-evenly;
+  }
+
+  .album-card {
+    width: 250px;
+  }
 }

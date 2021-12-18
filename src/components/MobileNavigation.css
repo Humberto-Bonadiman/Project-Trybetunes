@@ -1,0 +1,16 @@
+.MobileNavigation {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .MobileNavigation {
+    align-items: center;
+    display: flex;
+  }
+
+  .Hamburguer {
+    position: absolute;
+    left: 10px;
+    cursor: pointer;
+  }
+}

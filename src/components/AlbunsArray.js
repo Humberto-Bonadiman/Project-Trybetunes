@@ -31,7 +31,7 @@ class AlbunsArray extends React.Component {
 
     return (
       <article className="article-cards">
-        { lookAlbum ? albunsList : albumNotFound}
+        { lookAlbum ? albunsList : albumNotFound }
       </article>
     );
   }

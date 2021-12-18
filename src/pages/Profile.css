@@ -42,3 +42,11 @@
 .title-name {
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  .profile-information {
+    align-content: center;
+    width: 100%;
+    padding: 20px 0;
+  }
+}

@@ -5,14 +5,20 @@
   width: 100%;
 }
 
-ul {
-  background: rgb(67, 209, 175);
+.navigation-links {
   display: flex;
   justify-content: space-around;
+  background: rgb(67, 209, 175);
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
   list-style-type: none;
   margin: 0;
   overflow: hidden;
   padding: 0;
+  width: 100%;
 }
 
 li p {
@@ -33,4 +39,25 @@ li a:hover {
 
 .username-header {
   color: rgb(235, 217, 217);
+  margin-right: 20px;
+}
+
+.menu-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .menu-mobile {
+    display: block;
+  }
+
+  ul {
+    background-color: rgb(48, 194, 158);
+    border-top: 2px solid rgb(26, 88, 74);
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    position: absolute;
+    top: 51px;
+  }
 }
