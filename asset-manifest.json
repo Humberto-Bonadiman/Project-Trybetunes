@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Project-Trybetunes/static/css/main.b1833148.chunk.css",
+    "main.js": "/Project-Trybetunes/static/js/main.9b3c19ae.chunk.js",
+    "main.js.map": "/Project-Trybetunes/static/js/main.9b3c19ae.chunk.js.map",
+    "runtime-main.js": "/Project-Trybetunes/static/js/runtime-main.e4a8637c.js",
+    "runtime-main.js.map": "/Project-Trybetunes/static/js/runtime-main.e4a8637c.js.map",
+    "static/js/2.0e2c3c60.chunk.js": "/Project-Trybetunes/static/js/2.0e2c3c60.chunk.js",
+    "static/js/2.0e2c3c60.chunk.js.map": "/Project-Trybetunes/static/js/2.0e2c3c60.chunk.js.map",
+    "index.html": "/Project-Trybetunes/index.html",
+    "static/css/main.b1833148.chunk.css.map": "/Project-Trybetunes/static/css/main.b1833148.chunk.css.map",
+    "static/js/2.0e2c3c60.chunk.js.LICENSE.txt": "/Project-Trybetunes/static/js/2.0e2c3c60.chunk.js.LICENSE.txt",
+    "static/media/loading.6bfddb7c.gif": "/Project-Trybetunes/static/media/loading.6bfddb7c.gif",
+    "static/media/page-not-found.9e4ee96e.png": "/Project-Trybetunes/static/media/page-not-found.9e4ee96e.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e4a8637c.js",
+    "static/js/2.0e2c3c60.chunk.js",
+    "static/css/main.b1833148.chunk.css",
+    "static/js/main.9b3c19ae.chunk.js"
+  ]
+}
