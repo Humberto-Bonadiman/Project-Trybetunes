@@ -18,7 +18,7 @@ class AllPaths extends React.Component {
           <Route path="/favorites" component={ Favorites } />
           <Route path="/album/:id" component={ Album } />
           <Route path="/search" component={ Search } />
-          <Route exact path="/" component={ Login } />
+          <Route exact path="/Project-Trybetunes" component={ Login } />
           <Route path="*" component={ NotFound } />
         </Switch>
       </main>
